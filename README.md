@@ -1,3 +1,7 @@
+# Features
+
+- License selection
+
 # Quickstart
 
 Install the latest Cookiecutter if you haven't installed it yet:
