@@ -1,6 +1,6 @@
 { 
-    "project_slug": "pylsp-myplugin",
     "plugin_name": "myplugin",
+    "project_slug": "pylsp-{{cookiecutter.plugin_name}}",
     "author_name": "Lie Ryan",
     "author_email": "lie.1296@gmail.com",
     "repository_type": [
