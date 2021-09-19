@@ -3,5 +3,13 @@
     "plugin_name": "myplugin",
     "author_name": "Lie Ryan",
     "author_email": "lie.1296@gmail.com",
-    "description": "Package description for PyPI"
+    "description": "Package description for PyPI",
+    "open_source_license": [
+        "MIT license",
+        "BSD license",
+        "ISC license",
+        "Apache Software License 2.0",
+        "GNU General Public License v3",
+        "Not open source"
+    ]
 }
