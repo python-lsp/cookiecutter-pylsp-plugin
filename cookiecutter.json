@@ -1,0 +1,7 @@
+{ 
+    "project_slug": "pylsp-myplugin",
+    "plugin_name": "myplugin",
+    "author_name": "Lie Ryan",
+    "author_email": "lie.1296@gmail.com",
+    "description": "Package description for PyPI"
+}
