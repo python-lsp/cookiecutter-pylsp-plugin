@@ -3,6 +3,10 @@
     "plugin_name": "myplugin",
     "author_name": "Lie Ryan",
     "author_email": "lie.1296@gmail.com",
+    "repository_type": [
+        "Github",
+        "Do not set up repository"
+    ],
     "description": "Package description for PyPI",
     "open_source_license": [
         "MIT license",
