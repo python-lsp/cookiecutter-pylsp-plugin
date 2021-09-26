@@ -8,6 +8,10 @@
         "Do not set up repository"
     ],
     "repository_url": "{{('https://github.com/' + 'python-lsp' + '/' + cookiecutter.project_slug if cookiecutter.repository_type == 'Github' else '')}}",
+    "test_type": [
+        "pytest",
+        "Do not set up test framework"
+    ],
     "description": "Package description for PyPI",
     "open_source_license": [
         "MIT license",
