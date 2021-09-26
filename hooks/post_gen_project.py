@@ -2,6 +2,7 @@
 import os
 import shutil
 
+
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 
 
@@ -11,7 +12,11 @@ def remove_file(filepath):
 
 if __name__ == '__main__':
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
-        remove_file('LICENSE')
+        os.remove('LICENSE')
 
-    if 'Do not set up repository' == '{{ cookiecutter.repository_type }}':
+    if 'Github' != '{{ cookiecutter.repository_type }}':
         remove_file('.github')
+
+    if 'pytest' != '{{ cookiecutter.test_type }}':
+        os.remove('test/conftest.py')
+        os.remove('test/test_plugin.py')
