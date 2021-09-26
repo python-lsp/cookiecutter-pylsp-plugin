@@ -42,6 +42,20 @@ pylsp = pylsp_myplugin = pylsp_myplugin.plugin
 The entrypoint name can be anything but it's recommended to use the same name
 as your plugin package's import name.
 
+Next, you need to install your plugin package. During development, usually
+you'd want to install with something like:
+
+```
+pip install --editable 'path/to/package/'
+```
+
+where `path/to/package/` is the folder where your plugin's setup.py/setup.cfg
+is found.
+
+This installs your plugin as an [editable
+package](https://pip.pypa.io/en/stable/cli/pip_install/#install-editable),
+which is suitable during development.
+
 pylsp uses [pluggy](https://pluggy.readthedocs.io/en/stable/) for
 plugin management. It would be helpful to be familiar and read through pluggy
 documentation, but we'll go through a quick rundown here.
@@ -53,18 +67,26 @@ pylsp plugin is composed of a set of callbacks that are registered using
 from pylsp import hookimpl, uris, _utils
 
 @hookimpl
-def pylsp_definitions(config, document, position):
+def pylsp_definitions(config, workspace, document, position):
+    logger.info('Retrieving definitions: %s %s %s %s', config, workspace, document, position)
+    filename = __file__
+    uri = uris.uri_with(document.uri, path=filename)
+    with open(filename) as f:
+        lines = f.readlines()
+        for lineno, line in enumerate(lines):
+            if 'def pylsp_definitions' in line:
+                break
     return [
         {
-            'uri': uris.uri_with(document.uri, path='setup.py'),
+            'uri': uri,
             'range': {
                 'start': {
-                    'line': 10,
-                    'character': 5,
+                    'line': lineno,
+                    'character': 4,
                 },
                 'end': {
-                    'line': 20,
-                    'character': 10,
+                    'line': lineno,
+                    'character': line.find(')') + 1,
                 },
             }
         }
@@ -76,3 +98,8 @@ Refer the [list of hookspecs](https://github.com/python-lsp/python-lsp-server/bl
 And that's all you need to make a pylsp plugin. Once you have your entrypoint
 configured and register some `@hookimpl`, pylsp will call your callbacks to
 perform its functions.
+
+What comes next, is that you'll want to publish your package in a repository
+like Github and in PyPI so your package can be easily used and discovered by
+your users. You can use any way to publish your plugin package, but this
+cookiecutter will set you up to publish to PyPI using `twine`.
