@@ -22,6 +22,13 @@ Generate a Python package project:
 cookiecutter https://github.com/lieryan/cookiecutter-pylsp-plugin
 ```
 
+Install your plugin to the same environment as `pylsp` so that it can discover
+your plugin.
+
+```
+pip install --editable 'path/to/package/'
+```
+
 
 ## pylsp plugin developer documentation
 
