@@ -7,6 +7,8 @@ wired if you want to do-it-yourself instead of using the template.
 ## Features
 
 - License selection
+- Optionally configure pytest with some basic fixtures
+- Optionally configure Github project metadata (e.g. `ISSUE_TEMPLATE.md`)
 
 ## Quickstart
 
@@ -16,11 +18,13 @@ Install the latest Cookiecutter if you haven't installed it yet:
 pip install -U cookiecutter
 ```
 
-Generate a Python package project:
+Generate a pylsp plugin project:
 
 ```
 cookiecutter https://github.com/lieryan/cookiecutter-pylsp-plugin
 ```
+
+Follow the prompts to configure your plugin project.
 
 Install your plugin to the same environment as `pylsp` so that it can discover
 your plugin.
@@ -28,6 +32,36 @@ your plugin.
 ```
 pip install --editable 'path/to/package/'
 ```
+
+## Writing hooks
+
+The most important file in the generated package is `plugin.py`, this is where
+you will write pylsp hooks. The pylsp hooks corresponds to Language Server
+Protocol messages, you should read through the 
+[LSP specification](https://microsoft.github.io/language-server-protocol/specification).
+for the hook that you want to use.
+
+A pylsp hook is a function with a specific name, decorated by `@hookimpl`:
+
+```
+@hookimpl
+def pylsp_definitions(config, workspace, document, position):
+    ...
+```
+
+Refer to [list of hookspecs](https://github.com/python-lsp/python-lsp-server/blob/develop/pylsp/hookspecs.py)
+for the full list of all supported hooks.
+
+Don't confuse `@hookimpl` with the `@hookspec` decorator, which is used to
+define hooks. You'll almost never need to use `@hookspec` when writing a
+plugin.
+
+You should also write some tests for your hooks. If you choose to use `pytest`
+when generating the template, you should have everything you needed to start
+writing basic test in the `test/test_plugin.py` file. The `test/fixtures.py`
+contains some useful functions that you'll likely need to test your hooks.
+Refer to [pytest documentation](https://docs.pytest.org/) if you are unfamiliar
+with how to write tests in pytest.
 
 
 ## pylsp plugin developer documentation
@@ -102,7 +136,8 @@ def pylsp_definitions(config, workspace, document, position):
     ]
 ```
 
-Refer to [list of hookspecs](https://github.com/python-lsp/python-lsp-server/blob/develop/pylsp/hookspecs.py) for all hooks.
+Refer to [list of hookspecs](https://github.com/python-lsp/python-lsp-server/blob/develop/pylsp/hookspecs.py)
+for the full list of all supported hooks.
 
 And that's all you need to make a pylsp plugin. Once you have your entrypoint
 configured and register some `@hookimpl`, pylsp will call your callbacks to
