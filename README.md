@@ -25,14 +25,16 @@ cookiecutter https://github.com/lieryan/cookiecutter-pylsp-plugin
 
 ## pylsp plugin developer documentation
 
-The following section will help you understand how pylsp plugin is wired to the
-pylsp, which will help you make changes to the base setup when using this
-template or to do what this template does yourself.
+The following section documents how pylsp plugin is wired to pylsp. You do not
+need to understand this section if you creating your plugin from this
+cookiecutter template, but it may help you if you needed to make changes to the
+`entry_points` setup when using this template, or if you want to replicate what
+this template does in your own project that does not use this template.
 
 On startup, pylsp will automatically discover plugins by querying
-`pkg_resources` for package entrypoints. So that your plugin can be discovered
-by pylsp, you must configure the following in the setup.py/setup.cfg of your
-plugin's package:
+[`pkg_resources` for entrypoints](https://setuptools.pypa.io/en/latest/pkg_resources.html#entry-points).
+So that your plugin can be discovered by pylsp, you must configure the
+following in the `setup.py`/`setup.cfg` of your plugin's package:
 
 ```
 [options.entry_points]
@@ -49,8 +51,8 @@ you'd want to install with something like:
 pip install --editable 'path/to/package/'
 ```
 
-where `path/to/package/` is the folder where your plugin's setup.py/setup.cfg
-is found.
+where `path/to/package/` is the folder where your plugin's
+`setup.py`/`setup.cfg` is found.
 
 This installs your plugin as an [editable
 package](https://pip.pypa.io/en/stable/cli/pip_install/#install-editable),
@@ -93,7 +95,7 @@ def pylsp_definitions(config, workspace, document, position):
     ]
 ```
 
-Refer the [list of hookspecs](https://github.com/python-lsp/python-lsp-server/blob/develop/pylsp/hookspecs.py).
+Refer to [list of hookspecs](https://github.com/python-lsp/python-lsp-server/blob/develop/pylsp/hookspecs.py) for all hooks.
 
 And that's all you need to make a pylsp plugin. Once you have your entrypoint
 configured and register some `@hookimpl`, pylsp will call your callbacks to
