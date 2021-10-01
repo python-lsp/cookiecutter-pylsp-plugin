@@ -8,7 +8,7 @@ This is a plugin for the [Python LSP Server](https://github.com/python-lsp/pytho
 
 Install into the same virtualenv as python-lsp-server itself.
 
-```
+``` bash
 pip install {{ cookiecutter.project_slug }}
 ```
 
@@ -20,7 +20,7 @@ pip install {{ cookiecutter.project_slug }}
 
 Install development dependencies with (you might want to create a virtualenv first):
 
-```
+``` bash
 git clone {{cookiecutter.repository_url}} {{cookiecutter.project_slug}}
 cd {{cookiecutter.project_slug}}
 pip install -e '.[dev]'
@@ -35,7 +35,7 @@ Run `pytest` to run plugin tests.
 {%- if cookiecutter.publishing_type == "Publish to PyPI using twine" %}
 ## Publishing
 
-```
+``` bash
 python -m build
 twine upload dist/*
 ```
