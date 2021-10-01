@@ -35,6 +35,12 @@ Run `pytest` to run plugin tests.
 {%- if cookiecutter.publishing_type == "Publish to PyPI using twine" %}
 ## Publishing
 
+If this is your firt time publishing to PyPI, follow the instruction at [Twine
+docs](https://packaging.python.org/guides/distributing-packages-using-setuptools/#create-an-account)
+to create an PyPI account and setup Twine.
+
+Build a package and upload using Twine:
+
 ``` bash
 python -m build
 twine upload dist/*
