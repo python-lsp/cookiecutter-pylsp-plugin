@@ -1,0 +1,10 @@
+[project]
+name = "cookiecutter-pylsp-plugin"
+version = "0.1"
+authors = [
+    "Lie Ryan <lie.1296@gmail.com>",
+]
+description = "Cookiecutter template for creating a 3rd party python-lsp-server plugin"
+license = "MIT"
+readme = "README.md"
+python = "^3.6"
