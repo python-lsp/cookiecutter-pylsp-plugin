@@ -7,7 +7,8 @@ wired if you want to do-it-yourself instead of using the template.
 ## Features
 
 - License selection
-- Optionally configure pytest with some basic fixtures
+- Optionally configure PyTest with some basic fixtures
+- Optionally configure publishing to PyPI using Twine
 - Optionally configure Github project metadata (e.g. `ISSUE_TEMPLATE.md`)
 
 ## Quickstart
