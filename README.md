@@ -31,7 +31,16 @@ Install your plugin to the same environment as `pylsp` so that it can discover
 your plugin.
 
 ```
-pip install --editable 'path/to/package/'
+cd pylsp-myplugin
+pip install --editable '.[dev]'
+```
+
+Don't forget to commit the generated package to your version control, for example
+with Git:
+
+```
+git init
+git commit -m "Initial commit"
 ```
 
 ## Writing hooks
