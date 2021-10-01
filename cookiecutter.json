@@ -12,6 +12,10 @@
         "pytest",
         "Do not set up test framework"
     ],
+    "publishing_type": [
+        "Publish to PyPI using twine",
+        "Do not set up publishing"
+    ],
     "description": "Package description for PyPI",
     "open_source_license": [
         "MIT license",

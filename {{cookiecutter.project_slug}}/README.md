@@ -31,6 +31,16 @@ pip install -e '.[dev]'
 Run `pytest` to run plugin tests.
 {%- endif %}
 
+
+{%- if cookiecutter.publishing_type == "Publish to PyPI using twine" %}
+## Publishing
+
+```
+python -m build
+twine upload dist/*
+```
+{%- endif %}
+
 ## Credits
 
 This package was created with
