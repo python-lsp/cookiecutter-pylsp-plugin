@@ -2,7 +2,7 @@
 
 {{cookiecutter.description}}
 
-This is a plugin for the [Python LSP Server](https://github.com/python-lsp/python-lsp-server).
+This is a plugin for [Python LSP Server](https://github.com/python-lsp/python-lsp-server).
 
 ## Installation
 
@@ -50,6 +50,6 @@ twine upload dist/*
 ## Credits
 
 This package was created with
-[Cookiecutter](https://github.com/audreyr/cookiecutter) and the
+[Cookiecutter](https://github.com/audreyr/cookiecutter) from 
 [lieryan/cookiecutter-pylsp-plugin](https://github.com/lieryan/cookiecutter-pylsp-plugin)
 project template.
