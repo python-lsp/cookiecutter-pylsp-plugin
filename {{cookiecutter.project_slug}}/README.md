@@ -38,12 +38,23 @@ If this is your first time publishing to PyPI, follow the instruction at [Twine
 docs](https://packaging.python.org/guides/distributing-packages-using-setuptools/#create-an-account)
 to create an PyPI account and setup Twine.
 
-Build a package and upload using Twine:
+Build a package using setuptools:
 
 ``` bash
 python setup.py sdist
 twine check dist/*
+```
+
+Then upload using Twine:
+
+```
 twine upload dist/*
+```
+
+Alternatively, you may want to upload to test PyPI first before going live:
+
+```
+twine upload --repository testpypi dist/*
 ```
 {%- endif %}
 
