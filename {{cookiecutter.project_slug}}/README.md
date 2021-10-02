@@ -42,7 +42,8 @@ to create an PyPI account and setup Twine.
 Build a package and upload using Twine:
 
 ``` bash
-python -m build
+python setup.py sdist
+twine check dist/*
 twine upload dist/*
 ```
 {%- endif %}
