@@ -31,8 +31,7 @@ pip install -e '.[dev]'
 Run `pytest` to run plugin tests.
 {%- endif %}
 
-
-{%- if cookiecutter.publishing_type == "Publish to PyPI using twine" %}
+{% if cookiecutter.publishing_type == "Publish to PyPI using twine" %}
 ## Publishing
 
 If this is your first time publishing to PyPI, follow the instruction at [Twine
