@@ -16,6 +16,12 @@ pip install {{ cookiecutter.project_slug }}
 
 ... TODO ...
 
+## Features
+
+This plugin adds the following features to `pylsp`:
+
+- ... TODO ...
+
 ## Developing
 
 Install development dependencies with (you might want to create a virtualenv first):
