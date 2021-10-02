@@ -40,3 +40,24 @@ def workspace(tmpdir):
 @pytest.fixture
 def document(workspace):
     return Document(DOC_URI, workspace, DOC)
+
+
+@pytest.fixture
+def code_action_context():
+    # https://microsoft.github.io/language-server-protocol/specifications/specification-3-17/#codeActionKind
+    code_action_kind = [
+        "",
+        "quickfix",
+        "refactor",
+        "refactor.extract",
+        "refactor.inline",
+        "refactor.rewrite",
+        "source",
+        "source.organizeImports",
+        "source.fixAll",
+    ]
+
+    return {
+        "diagnostics": [],
+        "only": code_action_kind,
+    }
