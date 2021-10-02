@@ -1,12 +1,19 @@
 from unittest.mock import ANY
 
 from pylsp_{{ cookiecutter.plugin_name }} import plugin
-import test.conftest
+from test.conftest import *
 
 
 def test_definitions(config, workspace, document):
     position = {"line": 3, "character": 6}
-    resp = plugin.pylsp_definitions(config, workspace, document, position)
+
+    response = plugin.pylsp_definitions(
+        config=config,
+        workspace=workspace,
+        document=document,
+        position=position,
+    )
+
     expected = [
         {
             "uri": ANY,
@@ -23,4 +30,4 @@ def test_definitions(config, workspace, document):
         },
     ]
 
-    assert resp == expected
+    assert response == expected
