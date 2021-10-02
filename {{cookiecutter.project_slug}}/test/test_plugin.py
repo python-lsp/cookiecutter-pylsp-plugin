@@ -31,3 +31,35 @@ def test_definitions(config, workspace, document):
     ]
 
     assert response == expected
+
+
+def test_code_action(config, workspace, document, code_action_context):
+    selection = {
+        "start": {
+            "line": 3,
+            "character": 0,
+        },
+        "end": {
+            "line": 4,
+            "character": 0,
+        },
+    },
+
+    response = plugin.pylsp_code_actions(
+        config=config,
+        workspace=workspace,
+        document=document,
+        range=selection,
+        context=code_action_context,
+    )
+
+    expected = [
+        {
+            'title': 'Extract method',
+            'kind': 'refactor.extract',
+            'command': 'foobar-1',
+            'arguments': ['hello', 'world'],
+        }
+    ]
+
+    assert response == expected
