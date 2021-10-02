@@ -39,7 +39,8 @@ def pylsp_settings():
 
 @hookimpl
 def pylsp_code_actions(config, workspace, document, range, context):
-    logger.info("Retrieving code actions: %s %s %s %s %s", config, workspace, document, range, context)
+    logger.info("textDocument/codeAction: %s %s %s", document, range, context)
+
     return [
         {
             "title": "Extract method",
@@ -52,7 +53,8 @@ def pylsp_code_actions(config, workspace, document, range, context):
 
 @hookimpl
 def pylsp_execute_command(config, workspace, command, arguments):
-    logger.info("workspace/executeCommand: %s %s %s %s", config, workspace, command, arguments)
+    logger.info("workspace/executeCommand: %s %s", command, arguments)
+
     if command == "example.refactor.extract":
         current_document, range = arguments
 
@@ -73,7 +75,8 @@ def pylsp_execute_command(config, workspace, command, arguments):
 
 @hookimpl
 def pylsp_definitions(config, workspace, document, position):
-    logger.info("Retrieving definitions: %s %s %s %s", config, workspace, document, position)
+    logger.info("textDocument/definition: %s %s", document, position)
+
     filename = __file__
     uri = uris.uri_with(document.uri, path=filename)
     with open(filename) as f:
