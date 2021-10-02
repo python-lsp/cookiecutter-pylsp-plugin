@@ -39,14 +39,36 @@ def pylsp_settings():
 
 @hookimpl
 def pylsp_code_actions(config, workspace, document, range, context):
+    logger.info('Retrieving code actions: %s %s %s %s %s', config, workspace, document, range, context)
     return [
         {
             'title': 'Extract method',
             'kind': 'refactor.extract',
-            'command': 'foobar-1',
-            'arguments': ['hello', 'world'],
+            'command': 'example.refactor.extract',
+            'arguments': [document.uri, range],
         }
     ]
+
+
+@hookimpl
+def pylsp_execute_command(config, workspace, command, arguments):
+    logger.info("workspace/executeCommand: %s %s %s %s", config, workspace, command, arguments)
+    if command == 'example.refactor.extract':
+        current_document, range = arguments
+
+        workspace_edit = {
+            "changes": {
+                current_document: [
+                    {
+                        "range": range,
+                        "newText": "replacement text",
+                    },
+                ]
+            }
+        }
+
+        logger.info("applying workspace edit: %s %s", command, workspace_edit)
+        workspace.apply_edit(workspace_edit)
 
 
 @hookimpl

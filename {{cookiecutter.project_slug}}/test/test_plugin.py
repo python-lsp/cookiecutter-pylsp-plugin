@@ -43,7 +43,7 @@ def test_code_action(config, workspace, document, code_action_context):
             "line": 4,
             "character": 0,
         },
-    },
+    }
 
     response = plugin.pylsp_code_actions(
         config=config,
@@ -55,11 +55,40 @@ def test_code_action(config, workspace, document, code_action_context):
 
     expected = [
         {
-            'title': 'Extract method',
-            'kind': 'refactor.extract',
-            'command': 'foobar-1',
-            'arguments': ['hello', 'world'],
+            "title": "Extract method",
+            "kind": "refactor.extract",
+            "command": "example.refactor.extract",
+            "arguments": [document.uri, selection],
         }
     ]
 
     assert response == expected
+
+    command = response[0]["command"]
+    arguments = response[0]["arguments"]
+
+    response = plugin.pylsp_execute_command(
+        config=config,
+        workspace=workspace,
+        command=command,
+        arguments=arguments,
+    )
+
+    workspace._endpoint.request.assert_called_once_with(
+        "workspace/applyEdit",
+        {
+            "edit": {
+                "changes": {
+                    document.uri: [
+                        {
+                            "range": {
+                                "start": {"line": 3, "character": 0},
+                                "end": {"line": 4, "character": 0},
+                            },
+                            "newText": "replacement text",
+                        },
+                    ],
+                },
+            },
+        },
+    )
