@@ -45,9 +45,11 @@ def pylsp_code_actions(config, workspace, document, range, context):
         {
             "title": "Extract method",
             "kind": "refactor.extract",
-            "command": "example.refactor.extract",
-            "arguments": [document.uri, range],
-        }
+            "command": {
+                "command": "example.refactor.extract",
+                "arguments": [document.uri, range],
+            },
+        },
     ]
 
 

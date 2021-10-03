@@ -57,15 +57,17 @@ def test_code_action(config, workspace, document, code_action_context):
         {
             "title": "Extract method",
             "kind": "refactor.extract",
-            "command": "example.refactor.extract",
-            "arguments": [document.uri, selection],
-        }
+            "command": {
+                "command": "example.refactor.extract",
+                "arguments": [document.uri, selection],
+            },
+        },
     ]
 
     assert response == expected
 
-    command = response[0]["command"]
-    arguments = response[0]["arguments"]
+    command = response[0]["command"]["command"]
+    arguments = response[0]["command"]["arguments"]
 
     response = plugin.pylsp_execute_command(
         config=config,
