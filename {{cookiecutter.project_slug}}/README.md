@@ -6,7 +6,7 @@ This is a plugin for [Python LSP Server](https://github.com/python-lsp/python-ls
 
 ## Installation
 
-Install into the same virtualenv as python-lsp-server itself.
+To use this plugin, you need to install this plugin in the same virtualenv as python-lsp-server itself.
 
 ``` bash
 pip install {{ cookiecutter.project_slug }}
