@@ -12,6 +12,11 @@ To use this plugin, you need to install this plugin in the same virtualenv as py
 pip install {{ cookiecutter.project_slug }}
 ```
 
+Then run `python-lsp-server` as usual, the plugin will be auto-discovered by
+`python-lsp-server` if you've installed it to the right environment. Refer to
+`python-lsp-server` and your IDE/text editor documentation on how to setup
+`python-lsp-server`.
+
 ## Configuration
 
 ... TODO ...
@@ -70,5 +75,5 @@ twine upload --repository testpypi dist/*
 
 This package was created with
 [Cookiecutter](https://github.com/audreyr/cookiecutter) from 
-[lieryan/cookiecutter-pylsp-plugin](https://github.com/lieryan/cookiecutter-pylsp-plugin)
+[python-lsp/cookiecutter-pylsp-plugin](https://github.com/python-lsp/cookiecutter-pylsp-plugin)
 project template.

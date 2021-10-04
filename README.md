@@ -22,7 +22,7 @@ pip install -U cookiecutter
 Generate a pylsp plugin project:
 
 ```
-cookiecutter https://github.com/lieryan/cookiecutter-pylsp-plugin
+cookiecutter https://github.com/python-lsp/cookiecutter-pylsp-plugin
 ```
 
 Follow the prompts to configure your plugin project.
@@ -78,7 +78,7 @@ with how to write tests in pytest.
 ## pylsp plugin developer documentation
 
 The following section documents how pylsp plugin is wired to pylsp. You do not
-need to understand this section if you creating your plugin from this
+need to understand this section if you are creating your plugin from this
 cookiecutter template, but it may help you if you needed to make changes to the
 `entry_points` setup when using this template, or if you want to replicate what
 this template does in your own project that does not use this template.
