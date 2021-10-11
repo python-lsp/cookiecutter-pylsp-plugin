@@ -54,7 +54,7 @@ to create an PyPI account and setup Twine.
 2. Build a package using setuptools:
 
 ``` bash
-python setup.py sdist
+python -m build
 twine check dist/*
 ```
 
